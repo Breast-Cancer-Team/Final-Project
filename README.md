@@ -13,6 +13,6 @@ Responses:
   - Plot of data and R^2 values.
   
   - Messages: 
-    - Dimensions out of bounds. /n
+    - Dimensions out of bounds.
     - Not enough information provided.
     - Include this or don't include that. 
