@@ -8,11 +8,11 @@ Information Needed: Takes in information regarding tumor nuclei radius, texture,
 
 Responses: 
 
-  Boolean of malignant or benign nature of tumor based on input information.
+  - Boolean of malignant or benign nature of tumor based on input information.
   
-  Plot of data and R^2 values.
+  - Plot of data and R^2 values.
   
-  Messages: 
-    Dimensions out of bounds. /n
-    Not enough information provided.
-    Include this or don't include that. 
+  - Messages: 
+    - Dimensions out of bounds. /n
+    - Not enough information provided.
+    - Include this or don't include that. 
