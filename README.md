@@ -17,4 +17,9 @@ Responses:
     - Not enough information provided.
     - Include this or don't include that. 
 
+<<<<<<< HEAD
 This is a test. Kevin is trying to edit the README in his own branch.
+=======
+
+Sarah Addition for Breakout 
+>>>>>>> 0b2e0bfc266c2d36e1ba49ea21f6fc599db3cc26
