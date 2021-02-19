@@ -1,9 +1,0 @@
-title Process Flow of Software Design
-
-Data Cleaning->Correlation Filtering:Remove uneccesary data \n(e.g. patient ID, etc.) \n& map boolean diagnos
-Data Cleaning ->Correlation Filtering:Heatmap, remove highly correlated,\n redundant input features
-Correlation Filtering -> Data Splitting: Test, training data split
-Data Splitting-> Machine Learning Models:Testing out accuracy of 10 or more \nseparate models. Trying different \ninput features and measuring accuracy.\nRandom Forest Classifier, \nSupport Vector Machine,\nKNN, Linear Regression,\nLogistic Regression,\nDecision Tree Classifier,\n etc.\n
-Machine Learning Models -> Analysis:Linear separability / inseparability \nK-Fold cross validation, \ncross validation scores\nTests for overfitting & selection bias
-Analysis->Parameter Tuning:GridSearchCV, iterates over parameters,\nassigns scores. Find range of \nbest performance. 
-Parameter Tuning ->Ensemble:Pool together best model performers\nto maximize prediction accuracy\n
