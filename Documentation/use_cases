@@ -1,7 +1,12 @@
-Use Cases:
-User: pathologist examining tumor samples.
+**What software does**: 
 
-Information Needed: Takes in information regarding tumor nuclei radius, texture, perimeter, area, etc.
+Software ultimately focuses on diagnosing a patient’s breast cancer based on the cell nucleus properties such as radius, area, etc. To get there, gynecologists will extract cells that are inside a patient's breast using a method called fine needle aspirations (FNA) and send the biopsied tissues to pathologists. Then pathologists will observe the tissue’s cells and enter these cell’s measurements into software, which takes in a dataset from the user, cleans up unnecessary data, and splits the data into training and test sets in order to create machine learning models that output categorical, boolean results for diagnosis. 
+
+Multiple machine learning models are combined using an ensemble method in order to achieve the final diagnosis of each individual patient’s data input to the software. The software will approach a multiple machine learning design by using a heterogeneous ensemble learning method. 
+
+**User**: 
+The user of this software is most likely a pathologist that examines a patient’s samples and notes the physical properties of the patient’s cancer cells. The user will input this data into the software in order to diagnose the patient’s cancer as malignant or benign in nature.
+
 
 Responses:
 
