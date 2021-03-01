@@ -7,10 +7,18 @@ o	    Use same random seed for splits or save data to two csv files so train and
     o	Ask Dave about ensemble - can a heterogeneous model use different features for each base model? 
     	Initial assumption: Maximize accuracy of each model and then use an ensemble at the end. Each base model has 1 vote for output, therefore the input features of each model can be different?
 
+    Answer: ML models for ensemble do not have to be trained on the same input features, as long as error is minimized and accuracy is maximized and purpose of the ML model is fulfilled (predicting class) then training on different input features is okay. - 3/1/2021 Office Hours w/ Nisarg
+
 •	Interface for our program
     o	In terminal what numbers do you have and then we can build a dataframe for them and our program will run and display an output? Or fxn outside of ensemble that reads in a dataframe and put into our program.
 
+    Answer:
+
+
 •	How to unit test this? 
+
+    Answer:
+
 
 •	From Prof. Valleau on classifying / determining efficacy of models
     o	Feature selection using Python for classification problems | by Richard Liang | Towards Data Science
@@ -18,6 +26,9 @@ o	    Use same random seed for splits or save data to two csv files so train and
     o	Need to look at histograms
     	Could look at residuals for booleans 0, 1, -1
     	Also ask about histogram
+    
+    Answer:
+
 •	Action Items:
     o	Go through classifiers 
     o	MSE test for already made models
