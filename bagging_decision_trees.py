@@ -32,10 +32,6 @@ from matplotlib import pyplot as plt
 matplotlib.rcParams.update({'font.size': 18})
 from IPython.display import clear_output
 
-# Command to automatically reload modules before executing cells
-# not needed here but might be if you are writing your own library 
-get_ipython().run_line_magic('load_ext', 'autoreload')
-get_ipython().run_line_magic('autoreload', '2')
 
 # Import cleaning and splitting functions
 from clean_split_data import clean_data
@@ -43,52 +39,19 @@ from clean_split_data import split_data
 
 
 # ### Data
-
-# In[2]:
-
-
 data = pd.read_csv('data.csv')
-
-
-# In[3]:
-
-
 data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
 
 # ### Classifier
-
-# In[4]:
-
-
 # Default criterion is GINI index
-classifier = DecisionTreeClassifier()
-classifier.fit(X_train, y_train)
-clf_bag = BaggingClassifier(base_estimator=classifier, n_estimators=50, random_state=42)
-clf_bag = clf_bag.fit(X_train, y_train)
-
-
-# ### Bagging Prediction (User Input)
-
-# In[5]:
-
-
-def predict(test_data):
-    '''
-    Takes test data and uses classifier to predict boolean output.
-    '''
-    test_data = pd.DataFrame(test_data).T
-    y_bag = clf_bag.predict(test_data)
-    
-    return y_bag
+clf = DecisionTreeClassifier(max_depth=10, random_state=42)
+clf_bag = BaggingClassifier(base_estimator=clf, n_estimators=20, random_state=42)
+clf_bag.fit(X_train, y_train)
 
 
 # ### Sample Train, Test, Split Results
-
-# In[6]:
-
-
 def sample_results():
     '''
     Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
@@ -103,3 +66,27 @@ def sample_results():
     
     return
 
+
+# ### Optimized Bagging Predictor
+def feature_names():
+    '''
+    Returns array of input features of best performing backwards stepwise selection test.
+    '''
+    
+    return ['texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean',
+       'concavity_mean', 'concave points_mean', 'symmetry_mean']
+
+
+def predict(test_data):
+    '''
+    Takes test data and uses classifier to predict boolean output.
+    '''
+    X = data[feature_names()]
+    y = data.diagnosis
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    classifier = DecisionTreeClassifier(max_depth=10, random_state=42)
+    clf_bag = BaggingClassifier(base_estimator=classifier, n_estimators=20, random_state=42)
+    clf_bag = clf_bag.fit(X_train, y_train)
+    y_predict = clf_bag.predict(test_data)
+    
+    return y_predict

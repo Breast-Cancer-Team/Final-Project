@@ -1,39 +1,41 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-# Import pandas and plotting libraries
-import pandas as pd
+# Pandas library for the pandas dataframes
+import pandas as pd    
 import numpy as np
+
+# Import Scikit-Learn library for the classification models
+import sklearn
+from sklearn import datasets
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score, accuracy_score
+from sklearn.svm import SVC, LinearSVC
+from sklearn.metrics import confusion_matrix 
+from sklearn.metrics import plot_confusion_matrix
+from sklearn.feature_selection import SequentialFeatureSelector
+from sklearn.metrics import classification_report
+
+# Import plotting libraries
+import seaborn as sns
+import matplotlib 
 from matplotlib import pyplot as plt
 
-# Import Scikit-Learn library for the regression models and confusion matrix
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
-from sklearn import metrics
-from sklearn.metrics import r2_score, mean_squared_error, accuracy_score
-from sklearn.metrics import plot_confusion_matrix
-from sklearn.model_selection import KFold
-from sklearn.model_selection import cross_val_score
+# Set larger fontsize for all plots
+matplotlib.rcParams.update({'font.size': 20})
 
-# Import cleaning and splitting functions
+## Import cleaning and splitting functions
 from clean_split_data import clean_data
 from clean_split_data import split_data
 
 
 # ### Data
-data = pd. read_csv("data.csv")
+data = pd.read_csv('data.csv')
 data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
-
 # ### Classifier
-clf = LogisticRegression(solver="lbfgs", max_iter=250) 
+clf = SVC(kernel='linear', C=10000)
 clf.fit(X_train, y_train)
+
 
 # ### Sample Train, Test, Split Results
 def sample_results():
@@ -50,16 +52,17 @@ def sample_results():
     
     return
 
-# ### Optimized Logistic Regression Predictor
 
+# ### Optimized SVM_linear Classifier
 def feature_names():
     '''
     Returns array of input features of best performing backwards stepwise selection test.
     '''
     
-    return ['radius_mean', 'texture_mean', 'perimeter_mean',
-       'area_mean', 'smoothness_mean', 'compactness_mean', 'concavity_mean',
-       'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean']
+    return ['radius_mean', 'texture_mean', 'area_mean', 'compactness_mean',
+           'concavity_mean', 'concave points_mean', 'symmetry_mean',
+           'fractal_dimension_mean']
+
 
 def predict(test_data):
     '''
@@ -68,9 +71,8 @@ def predict(test_data):
     X = data[feature_names()]
     y = data.diagnosis
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    logistic_reg = LogisticRegression(solver="lbfgs", max_iter=146) 
-    logistic_reg.fit(X_train, y_train)
-    y_pred = logistic_reg.predict(test_data)
+    classifier = SVC(kernel='linear', C=10000)
+    classifier.fit(X_train, y_train)
+    y_pred = classifier.predict(test_data)
     
     return y_pred
-

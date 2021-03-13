@@ -31,10 +31,6 @@ from matplotlib import pyplot as plt
 matplotlib.rcParams.update({'font.size': 18})
 from IPython.display import clear_output
 
-# Command to automatically reload modules before executing cells
-# not needed here but might be if you are writing your own library 
-get_ipython().run_line_magic('load_ext', 'autoreload')
-get_ipython().run_line_magic('autoreload', '2')
 
 # Import cleaning and splitting functions
 from clean_split_data import clean_data
@@ -42,61 +38,49 @@ from clean_split_data import split_data
 
 
 # ### Data
-
-# In[2]:
-
-
 data = pd.read_csv('data.csv')
-
-
-# In[3]:
-
-
 data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
 
 # ### Classifier
-
-# In[4]:
-
-
-# Default criterion is GINI index
-classifier = DecisionTreeClassifier()
-classifier.fit(X_train, y_train)
+clf = DecisionTreeClassifier(max_depth=10)
+clf.fit(X_train, y_train)
 
 
-# ### Decision Tree Prediction (User Input)
+# ### Sample Train, Test, Split Results
+def sample_results():
+    ''' 
+    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
+    '''
+    y_pred = clf.predict(X_test)
+    print("Prediction accuracy MSE: ", mean_squared_error(y_test, y_pred))
+    print("Mean accuracy on test set", clf.score(X_test, y_test))
+    print("The confusion matrix for the sample dataset using a decision tree is displayed below: ")
+    print(classification_report(y_test, y_pred))
+    plot_confusion_matrix(clf, X_test, y_test)
+    plt.show()
+    
+    return
 
-# In[5]:
-
+# ### Optimized Decision Tree Predictor
+def feature_names():
+    '''
+    Returns array of input features of best performing backwards stepwise selection test.
+    '''
+    
+    return ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean',
+       'smoothness_mean', 'concave points_mean', 'fractal_dimension_mean']
 
 def predict(test_data):
     '''
     Takes test data and uses classifier to predict boolean output.
     '''
-    test_data = pd.DataFrame(test_data).T
+    X = data[feature_names()]
+    y = data.diagnosis
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    classifier = DecisionTreeClassifier(max_depth=10)
+    classifier.fit(X_train, y_train)
     y_pred = classifier.predict(test_data)
     
     return y_pred
-
-
-# ### Sample Train, Test, Split Results
-
-# In[6]:
-
-
-def sample_results():
-    ''' 
-    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
-    '''
-    y_pred = classifier.predict(X_test)
-    print("Mean accuracy on test set", classifier.score(X_test, y_test))
-    print("The following table is the classification report for model predictions: ")
-    print(classification_report(y_test, y_pred))
-    print("The confusion matrix for the sample dataset using decision trees is displayed below: ")
-    plot_confusion_matrix(classifier, X_test, y_test)
-    plt.show()
-    
-    return
-

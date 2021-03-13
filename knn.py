@@ -47,62 +47,48 @@ X_train, X_test, y_train, y_test = split_data(data)
 # In[4]:
 
 
-K_neighbors = 10
-clf = neighbors.KNeighborsClassifier(K_neighbors, weights='uniform')
+clf = KNeighborsClassifier(n_neighbors=5, weights='uniform')
 clf.fit(X_train, y_train)
 
 
 # ### kNN Prediction (User Input)
 
-# In[5]:
+# ### Sample Train, Test, Splits Results
+
+def sample_results():
+    ''' 
+    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
+    '''
+    y_pred = clf.predict(X_test)
+    print("Prediction accuracy MSE: ", mean_squared_error(y_test, y_pred))
+    print("Mean accuracy on test set", clf.score(X_test, y_test))
+    print("The confusion matrix for the sample dataset using a decision tree is displayed below: ")
+    print(classification_report(y_test, y_pred))
+    plot_confusion_matrix(clf, X_test, y_test)
+    plt.show()
+    
+    return
+
+# ### Optimized KNN Predictor
+def feature_names():
+    '''
+    Returns array of input features of best performing backwards stepwise selection test.
+    '''
+    
+    return ['texture_mean', 'perimeter_mean', 'smoothness_mean',
+       'compactness_mean', 'concavity_mean', 'concave points_mean',
+       'symmetry_mean', 'fractal_dimension_mean']
 
 
 def predict(test_data):
     '''
     Takes test data and uses classifier to predict boolean output.
     '''
-    test_data = pd.DataFrame(test_data).T
-    y_pred = clf.predict(test_data)
+    X = data[feature_names()]
+    y = data.diagnosis
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    clf = KNeighborsClassifier(n_neighbors=5, weights='uniform')
+    clf.fit(X_train, y_train)
+    y_predict = clf.predict(test_data)
     
-    return y_pred
-
-
-# ### Sample Train, Test, Splits Results
-
-# In[6]:
-
-
-def sample_results():
-    '''
-    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
-    '''
-    y_pred = clf.predict(X_test)
-    ones_incorrect = 0
-    zeros_incorrect = 0    
-    y_test_list = list(y_test)
-    y_pred_list = list(y_pred)
-    for test, pred in zip(y_test_list, y_pred_list):
-        if test == 0 and test != pred:
-            zeros_incorrect += 1
-        elif test == 1 and test != pred:
-            ones_incorrect += 1
-        else:
-            pass
-    zeros_true, ones_true = y_test.value_counts()
-    zeros_correct = zeros_true - zeros_incorrect
-    ones_correct = ones_true - ones_incorrect
-    confusion_array = [[zeros_correct, zeros_incorrect],
-                        [ones_incorrect, ones_correct]]
-    df_confusion = pd.DataFrame(confusion_array, index=["0", "1"], columns=["0", "1"])
-    print("Mean accuracy of prediction", clf.score(X_test, y_test))
-    print("The following table is the classification report for model predictions: ")
-    print(classification_report(y_test, y_pred))
-    print("The confusion matrix for the sample dataset using kNN Neighbors is displayed below: ")
-    fig, ax = plt.subplots(figsize=(10, 7))
-    sns.set(font_scale=1.5)
-    ax.set_xlabel('Predicted label', fontsize=15)
-    ax.set_ylabel("True label", fontsize=15)
-    sns.heatmap(df_confusion, annot=True, cmap='viridis', ax=ax)
-
-    return
-
+    return y_predict
