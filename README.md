@@ -1,6 +1,6 @@
-## Machine Learning Ensemble To Determine Tumor Benign or Malignant Status 
+### Machine Learning Ensemble To Determine Tumor Benign or Malignant Status 
 
-##Introduction
+## Introduction
 Welcome to our open source ensemble! This program is optimized to predict malignant or benign status of a tumor given quatitative measurements of the tumor cells nucleii.
  The intended users for this function are pathologists who have fine needle aspirations of breast cancer tumors. 
 
@@ -12,14 +12,13 @@ The reason we chose an ensemble approach is to have a "voting approach" approach
 ## Build Status
 Using Travis-CI
 
- 
 ## Code Style
 Code is PEP8 compliant. 
 
 ## Screenshots of Code
 
-##Tech/Framework Used
-    # Built with:
+## Tech/Framework Used
+   Built with:
      - Jupyter Notebook
      - Sublime Text
 
@@ -30,28 +29,28 @@ Code is PEP8 compliant.
      - a data splitting function that takes the users input data and cleans+pasrses it. 
  
 ## Use Cases: 
- User: Pathologist examining fine needle aspirations of breast cancer tissue under a microscope for malignancy status.
+User: Pathologist examining fine needle aspirations of breast cancer tissue under a microscope for malignancy status.
 
- Information Necessary:
-     - 'radius_mean',
-     - 'texture_mean',
-     - 'perimeter_mean',
-     - 'area_mean',
-     - 'smoothness_mean',
-     - 'compactness_mean',
-     - 'concavity_mean',
-     - 'concave points_mean',
-     - 'symmetry_mean',
-     - 'fractal_dimension_mean'
+Information Necessary:
+- 'radius_mean',
+- 'texture_mean',
+- 'perimeter_mean',
+- 'area_mean',
+- 'smoothness_mean',
+- 'compactness_mean',
+- 'concavity_mean',
+- 'concave points_mean',
+- 'symmetry_mean',
+- 'fractal_dimension_mean'
 
- Responses: 
-     - Boolean of malignant or benign nature of tumor based on input information.
-     - Plot of data and accuracy values.
+Responses: 
+- Boolean of malignant or benign nature of tumor based on input information.
+- Plot of data and predicted accuracy values.
   
-  Messages: 
-    - Dimensions out of bounds.
-    - Not enough information provided.
-    - Incorrect File Type.
+Messages: 
+- Dimensions out of bounds.
+- Not enough information provided.
+- Incorrect File Type.
 
 ## Code Example
 
