@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
+# In[13]:
 
 
 import sys
@@ -22,8 +22,12 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
+
 from clean_split_data import clean_data
 from clean_split_data import split_data
+
+
+# In[ ]:
 
 
 def main():
@@ -33,7 +37,8 @@ def main():
     system_argumets = sys.argv
     try:
         if system_argumets[1] == "-stacking":
-            val = input("Enter your data file name (noted: must be a csv file organized with 10 features): ")
+            val = input("Enter your data file name (noted: must be a csv file organized with 6 features): ")
+            print("starting the training process, please give it some more time :) ")
             please_predict_me(val)
     except Exception as e:
         print(str(e))
@@ -58,9 +63,7 @@ def stacking_predictor(row):
     our_trained_data = pd.read_csv("data.csv")
     our_trained_data = clean_data(our_trained_data)
 
-    x=our_trained_data[['radius_mean', 'texture_mean', 'perimeter_mean',
-       'area_mean', 'smoothness_mean', 'compactness_mean', 'concavity_mean',
-       'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean']]
+    x=our_trained_data[['radius_mean', 'texture_mean','area_mean','concavity_mean','concave points_mean', 'symmetry_mean']]
     y=our_trained_data[['diagnosis']]
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
@@ -77,13 +80,15 @@ def stacking_predictor(row):
     X, y = x_train, flattened_y_train
     
     estimators = [
-    ('rf', RandomForestClassifier(n_estimators=5, random_state=42)),
-    ('log', LogisticRegression(solver="lbfgs", max_iter=146)),
+    ('random_forest', RandomForestClassifier(n_estimators=5, random_state=42)),
+    ('logistic_regr', LogisticRegression(solver="lbfgs", max_iter=146)),
     ('knn', KNeighborsClassifier(n_neighbors =5)),
-    ('svm', SVC(kernel='rbf', gamma=4, C=10000))
+    ('svm_rbf', SVC(kernel='rbf', gamma=4, C=10000))
 ]
     Stacking_classifier = StackingClassifier(estimators=estimators, final_estimator=LogisticRegression(), cv = 5)
     X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
+    
+    #Fit the stacking model with our own data and with selected 6 features. 
     Stacking_classifier.fit(X_train, y_train)
     
     #Now predicting one patient 
@@ -95,20 +100,21 @@ def stacking_predictor(row):
 def please_predict_me(data):
 
     parsed_data = parsed_input_csv(data)
-    All_patients_result = [] 
+    all_patients_result = [] 
     
     for row in parsed_data:
         Individual_result = stacking_predictor(row)
-        All_patients_result.append(Individual_result)
+        all_patients_result.append(Individual_result)
         
-    return str(All_patients_result)[1:-1]
-    print(str(All_patients_result)[1:-1])
+    result_dict = {}
+    for i, item in enumerate(all_patients_result):
+        patient, classification = item.split(' ')
+        patient = patient + str(i)
+        print(f'{patient} is classified under class {classification}')
+        result_dict[patient] = classification
 
-def asking_for_input(val): 
+    return result_dict
 
-    val = input("Enter your data file name (noted: must be a csv file organized with 10 features): ") 
-    please_predict_me(val)
-    
     
 if __name__ == "__main__":
     main()
