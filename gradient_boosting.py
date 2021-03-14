@@ -35,21 +35,6 @@ tree_count = 10
 gradient_model = GradientBoostingClassifier(n_estimators=tree_count, learning_rate=0.1,max_depth=10,random_state=42)
 gradient_model.fit(X_train,y_train)
 
-# ### Sample Train, Test, Split Results
-def sample_results():
-    ''' 
-    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
-    '''
-    y_pred = gradient_model.predict(X_test)
-    print("Prediction accuracy MSE: ", mean_squared_error(y_test, y_pred))
-    print("Mean accuracy on test set", gradient_model.score(X_test, y_test))
-    print("The confusion matrix for the sample dataset using a decision tree is displayed below: ")
-    print(classification_report(y_test, y_pred))
-    plot_confusion_matrix(gradient_model, X_test, y_test)
-    plt.show()
-    
-    return
-
 # ### Optimized Gradient Boosting Predictor
 def feature_names():
     '''

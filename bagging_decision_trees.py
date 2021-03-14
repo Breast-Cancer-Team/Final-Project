@@ -50,23 +50,6 @@ clf = DecisionTreeClassifier(max_depth=10, random_state=42)
 clf_bag = BaggingClassifier(base_estimator=clf, n_estimators=20, random_state=42)
 clf_bag.fit(X_train, y_train)
 
-
-# ### Sample Train, Test, Split Results
-def sample_results():
-    '''
-    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
-    '''
-    y_bag = clf_bag.predict(X_test)
-    print("Accuracy score", accuracy_score(y_test, y_bag))
-    print("The following table is the classification report for model predictions: ")
-    print(classification_report(y_test, y_bag))
-    print("The confusion matrix for the sample dataset using bagging decision trees is displayed below: ")
-    plot_confusion_matrix(clf_bag, X_test, y_test)
-    plt.show()
-    
-    return
-
-
 # ### Optimized Bagging Predictor
 def feature_names():
     '''

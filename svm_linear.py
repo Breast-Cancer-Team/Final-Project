@@ -36,23 +36,6 @@ X_train, X_test, y_train, y_test = split_data(data)
 clf = SVC(kernel='linear', C=10000)
 clf.fit(X_train, y_train)
 
-
-# ### Sample Train, Test, Split Results
-def sample_results():
-    ''' 
-    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
-    '''
-    y_pred = clf.predict(X_test)
-    print("Prediction accuracy MSE: ", mean_squared_error(y_test, y_pred))
-    print("Mean accuracy on test set", clf.score(X_test, y_test))
-    print("The confusion matrix for the sample dataset using a decision tree is displayed below: ")
-    print(classification_report(y_test, y_pred))
-    plot_confusion_matrix(clf, X_test, y_test)
-    plt.show()
-    
-    return
-
-
 # ### Optimized SVM_linear Classifier
 def feature_names():
     '''

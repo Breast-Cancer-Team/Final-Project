@@ -28,46 +28,13 @@ from collections import Counter
 
 
 # ### Data
-
-# In[2]:
-
-
 data = pd.read_csv("data.csv")
-
-
-# In[3]:
-
-
 data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
-
 # ### Classifier
-
-# In[4]:
-
-
 clf = KNeighborsClassifier(n_neighbors=5, weights='uniform')
 clf.fit(X_train, y_train)
-
-
-# ### kNN Prediction (User Input)
-
-# ### Sample Train, Test, Splits Results
-
-def sample_results():
-    ''' 
-    Returns the results and confusion matrix of the sample dataset from Breast Cancer Wisconsin Dataset.
-    '''
-    y_pred = clf.predict(X_test)
-    print("Prediction accuracy MSE: ", mean_squared_error(y_test, y_pred))
-    print("Mean accuracy on test set", clf.score(X_test, y_test))
-    print("The confusion matrix for the sample dataset using a decision tree is displayed below: ")
-    print(classification_report(y_test, y_pred))
-    plot_confusion_matrix(clf, X_test, y_test)
-    plt.show()
-    
-    return
 
 # ### Optimized KNN Predictor
 def feature_names():
