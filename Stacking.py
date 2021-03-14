@@ -37,7 +37,7 @@ def main():
     system_argumets = sys.argv
     try:
         if system_argumets[1] == "-stacking":
-            val = input("Enter your data file name (noted: must be a csv file organized with 6 features): ")
+            val = input("Enter your data file name (noted: must be a csv file organized with 7 features): ")
             print("starting the training process, please give it some more time :) ")
             please_predict_me(val)
     except Exception as e:
@@ -63,7 +63,7 @@ def stacking_predictor(row):
     our_trained_data = pd.read_csv("data.csv")
     our_trained_data = clean_data(our_trained_data)
 
-    x=our_trained_data[['radius_mean', 'texture_mean','area_mean','concavity_mean','concave points_mean', 'symmetry_mean']]
+    x=our_trained_data[['radius_mean', 'texture_mean','area_mean','concavity_mean','concave points_mean', 'symmetry_mean', 'smoothness_mean']]
     y=our_trained_data[['diagnosis']]
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
@@ -81,15 +81,14 @@ def stacking_predictor(row):
     
     estimators = [
     ('random_forest', RandomForestClassifier(n_estimators=5, random_state=42)),
-    ('logistic_regr', LogisticRegression(solver="lbfgs", max_iter=146)),
+    ('logistic_regr', LogisticRegression(solver="lbfgs", max_iter=1460)),
     ('knn', KNeighborsClassifier(n_neighbors =5)),
     ('svm_rbf', SVC(kernel='rbf', gamma=4, C=10000))
 ]
     Stacking_classifier = StackingClassifier(estimators=estimators, final_estimator=LogisticRegression(), cv = 5)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
-    
-    #Fit the stacking model with our own data and with selected 6 features. 
-    Stacking_classifier.fit(X_train, y_train)
+  
+    #Fit the stacking model with our own data and with selected 7 features. 
+    Stacking_classifier.fit(X, y)
     
     #Now predicting one patient 
     single_predicted_result = Stacking_classifier.predict([row])
