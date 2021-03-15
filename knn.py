@@ -31,7 +31,7 @@ data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
 # ### Classifier
-clf = KNeighborsClassifier(n_neighbors=20, weights='uniform')
+clf = KNeighborsClassifier(n_neighbors=5, weights='uniform')
 clf.fit(X_train, y_train)
 
 # ### Optimized KNN Predictor
@@ -52,7 +52,7 @@ def predict(test_data):
     X = data[feature_names()]
     y = data.diagnosis
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    clf = KNeighborsClassifier(n_neighbors=20, weights='uniform')
+    clf = KNeighborsClassifier(n_neighbors=5, weights='uniform')
     clf.fit(X_train, y_train)
     y_predict = clf.predict(test_data)
     
