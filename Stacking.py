@@ -103,7 +103,9 @@ def stacking_predictor(row):
     return('%s %d' % ("patient", single_predicted_result))
     
 def please_predict_me(data):
-
+    '''
+    Takes parsed dataset and returns predictions for each patient as a dictionary. Output is displayed on main.
+    '''
     parsed_data = parsed_input_csv(data)
     all_patients_result = [] 
     
