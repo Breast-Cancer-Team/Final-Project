@@ -7,14 +7,7 @@
 # Importing wrapping function
 import ensemble_wrapping_function
 
-
-# Import cleaning and splitting
-import clean_split_data
-
-
 # Importing libraries for property tests
-import math
-import numpy as np
 import pandas as pd
 
 
@@ -31,7 +24,7 @@ def test_average_ensemble_1():
     '''
     df, csv = ensemble_wrapping_function.average_ensemble(test_data)
     assert isinstance(df, pd.DataFrame)
-    
+
     return
 
 
@@ -40,10 +33,10 @@ def test_average_ensemble_1():
 
 def test_average_ensemble_2():
     '''
-    Tests to see if second return of csv file is expected NoneType (since it is a downloaded file)
+    Tests to see if second return of csv file is
+    expected NoneType (since it is a downloaded file)
     '''
     df, csv = ensemble_wrapping_function.average_ensemble(test_data)
     assert isinstance(csv, type(None))
-    
-    return
 
+    return
