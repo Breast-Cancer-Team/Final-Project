@@ -44,7 +44,7 @@ X_train, X_test, y_train, y_test = split_data(data)
 
 
 # ### Classifier
-clf = DecisionTreeClassifier(max_depth=10)
+clf = DecisionTreeClassifier(max_depth=5)
 clf.fit(X_train, y_train)
 
 # ### Optimized Decision Tree Predictor
@@ -63,7 +63,7 @@ def predict(test_data):
     X = data[feature_names()]
     y = data.diagnosis
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    classifier = DecisionTreeClassifier(max_depth=10)
+    classifier = DecisionTreeClassifier(max_depth=5)
     classifier.fit(X_train, y_train)
     y_pred = classifier.predict(test_data)
     

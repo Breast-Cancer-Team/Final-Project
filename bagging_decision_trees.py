@@ -46,8 +46,8 @@ X_train, X_test, y_train, y_test = split_data(data)
 
 # ### Classifier
 # Default criterion is GINI index
-clf = DecisionTreeClassifier(max_depth=10, random_state=42)
-clf_bag = BaggingClassifier(base_estimator=clf, n_estimators=20, random_state=42)
+clf = DecisionTreeClassifier(max_depth=5, random_state=42)
+clf_bag = BaggingClassifier(base_estimator=clf, n_estimators=2, random_state=42)
 clf_bag.fit(X_train, y_train)
 
 # ### Optimized Bagging Predictor
@@ -67,8 +67,8 @@ def predict(test_data):
     X = data[feature_names()]
     y = data.diagnosis
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    classifier = DecisionTreeClassifier(max_depth=10, random_state=42)
-    clf_bag = BaggingClassifier(base_estimator=classifier, n_estimators=20, random_state=42)
+    classifier = DecisionTreeClassifier(max_depth=5, random_state=42)
+    clf_bag = BaggingClassifier(base_estimator=classifier, n_estimators=2, random_state=42)
     clf_bag = clf_bag.fit(X_train, y_train)
     y_predict = clf_bag.predict(test_data)
     

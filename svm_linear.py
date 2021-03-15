@@ -33,7 +33,7 @@ data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
 # ### Classifier
-clf = SVC(kernel='linear', C=10000)
+clf = SVC(kernel='linear', C=1000)
 clf.fit(X_train, y_train)
 
 # ### Optimized SVM_linear Classifier
@@ -54,7 +54,7 @@ def predict(test_data):
     X = data[feature_names()]
     y = data.diagnosis
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    classifier = SVC(kernel='linear', C=10000)
+    classifier = SVC(kernel='linear', C=1000)
     classifier.fit(X_train, y_train)
     y_pred = classifier.predict(test_data)
     
