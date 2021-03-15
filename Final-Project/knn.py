@@ -26,7 +26,7 @@ from collections import Counter
 
 
 # ### Data
-data = pd.read_csv("data.csv")
+data = pd.read_csv('data/data.csv')
 data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
