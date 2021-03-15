@@ -16,7 +16,7 @@ import pandas as pd
 # In[2]:
 
 
-data = pd.read_csv('data.csv')
+data = pd.read_csv('Final-Project/data/data.csv')
 
 
 # In[3]:

@@ -47,14 +47,14 @@ def average_ensemble(csv_name):
     predictions_df = pd.DataFrame(columns=['Sample ID', 'Diagnosis'])
     list_of_models = [bagging_decision_trees, decision_trees, gradient_boosting,
                       knn, logistic_regression, random_forest, svm_linear, svm_rbf]
-    list_of_votes = np.zeros(len(data)) 
+    list_of_weights = [1.0335, 1.0068, 1.0106, 0.9742, 0.955, 1.0373, 1.0066, 0.9761]
+    list_of_votes = np.zeros(len(data))
     list_of_boolean_values = pd.DataFrame()
     
     #Generating Votes From Each Model
-    for model in list_of_models:
+    for model, weight in zip(list_of_models, list_of_weights):
         X = data[model.feature_names()]
-        list_of_votes += (model.predict(X))
-        
+        list_of_votes += weight*(model.predict(X))
         boolean_list = pd.DataFrame(model.predict(X)).T
         list_of_boolean_values = list_of_boolean_values.append(boolean_list)
     index = 0
