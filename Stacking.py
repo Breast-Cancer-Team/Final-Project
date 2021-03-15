@@ -28,7 +28,7 @@ from clean_split_data import clean_data
 from clean_split_data import split_data
 
 
-# In[ ]:
+
 
 
 def main():
@@ -91,6 +91,7 @@ def stacking_predictor(row):
     ('knn', KNeighborsClassifier(n_neighbors =5)),
     ('svm_rbf', SVC(kernel='rbf', gamma=4, C=10000))
 ]
+    
     Stacking_classifier = StackingClassifier(estimators=estimators, final_estimator=LogisticRegression(), cv = 5)
   
     #Fit the stacking model with our own data and with selected 7 features. 
@@ -98,7 +99,6 @@ def stacking_predictor(row):
     
     #Now predicting one patient 
     single_predicted_result = Stacking_classifier.predict([row])
-#     single_probability = Stacking_classifier.predict_proba([row])
     
     return('%s %d' % ("patient", single_predicted_result))
     
@@ -108,8 +108,8 @@ def please_predict_me(data):
     all_patients_result = [] 
     
     for row in parsed_data:
-        Individual_result = stacking_predictor(row)
-        all_patients_result.append(Individual_result)
+        individual_result = stacking_predictor(row)
+        all_patients_result.append(individual_result)
         
     result_dict = {}
     for i, item in enumerate(all_patients_result):
