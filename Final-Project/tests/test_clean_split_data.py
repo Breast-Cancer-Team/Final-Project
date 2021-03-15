@@ -3,13 +3,15 @@
 
 # In[1]:
 
+"""
+This file will be used to test the clean_split_data.py file.
+"""
 
 # Import cleaning and splitting
 import clean_split_data
 
 # Importing libraries for property tests
 import math
-import numpy as np
 import pandas as pd
 
 
@@ -30,7 +32,7 @@ def test_clean_data_1():
     names = df.columns
     for name in names:
         assert isinstance(name, str)
-    
+
     return
 
 
@@ -45,8 +47,9 @@ def test_clean_data_2():
     names = df.columns
     substring = "_se"
     for name in names:
-        assert substring not in name, "Standard error columns still exist in dataframe"
-    
+        assert substring not in name, ...
+        "Standard error columns still exist in dataframe"
+
     return
 
 
@@ -61,8 +64,9 @@ def test_clean_data_3():
     names = df.columns
     substring = "_worst"
     for name in names:
-        assert substring not in name, "Worst measurement columns still exist in dataframe"
-    
+        assert substring not in name, ...
+        "Worst measurement columns still exist in dataframe"
+
     return
 
 
@@ -77,8 +81,9 @@ def test_clean_data_4():
     names = df.columns
     substring = "id"
     for name in names:
-        assert substring not in name, "ID column still exists in dataframe"
-    
+        assert substring not in name, ...
+        "ID column still exists in dataframe"
+
     return
 
 
@@ -87,14 +92,15 @@ def test_clean_data_4():
 
 def test_clean_data_5():
     '''
-    Test to determine if "Unnamed: 32" column was successfully dropped from dataframe
+    Test to determine if "Unnamed: 32" was successfully dropped from dataframe
     '''
     df = clean_split_data.clean_data(data)
     names = df.columns
     substring = "Unnamed: 32"
     for name in names:
-        assert substring not in name, "Unnamed: 32 column still exists in dataframe"
-    
+        assert substring not in name, ...
+        "Unnamed: 32 column still exists in dataframe"
+
     return
 
 
@@ -108,8 +114,9 @@ def test_clean_data_6():
     df = clean_split_data.clean_data(data)
     diagnosis = df.diagnosis
     for cancer in diagnosis:
-        assert isinstance(cancer, int), "Diagnosis values are not integers"
-    
+        assert isinstance(cancer, int), ...
+        "Diagnosis values are not integers"
+
     return
 
 
@@ -126,8 +133,9 @@ def test_split_data_1():
     train_length = len(X_train)
     test_length = len(X_test)
     total_split = train_length + test_length
-    assert math.isclose(total_length, total_split), "Length of data is not the same as before splitting"
-    
+    assert math.isclose(total_length, total_split), ...
+    "Len(data) is not equal to len before splitting"
+
     return
 
 
@@ -143,7 +151,7 @@ def test_split_data_2():
     X_train, X_test, y_train, y_test = clean_split_data.split_data(df)
     train_length = len(X_train)
     train_split = train_length / total_length
-    assert math.isclose(train_split, 0.80, abs_tol=0.1), "Training set is not at specified 80% of dataset"
-    
-    return
+    assert math.isclose(train_split, 0.80, abs_tol=0.1), ...
+    "Train set is not specified 80% of data"
 
+    return
