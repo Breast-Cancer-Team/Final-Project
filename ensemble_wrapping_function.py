@@ -1,5 +1,6 @@
 # Importing models
 
+import sys
 import bagging_decision_trees
 import decision_trees
 import gradient_boosting
@@ -21,11 +22,26 @@ import seaborn as sns
 
 sns.set()
 
+def main():
+    """
+    Main function to read terminal input
+    """
+    system_argumets = sys.argv
+    try:
+        if system_argumets[1] == "-averaging":
+            val = input("Enter your data filename as filename.csv: ")
+            print("Starting the training and predicting process, this may take a few moments.")
+            average_ensemble(val)
+    except Exception as e:
+        print(str(e))
+        print("Either illegal arguments or no arguments were given by the User. Please read Readme file")
+
+
 # Averaging ensemble function
 def average_ensemble(csv_name):
     '''
-    Takes user input data and returns excel with diagnosis of each patient. User must input csv file name including .csv file type as a string.
-    Also returns pdf file detailing diagnosis of each case as well as probability distributions of diagnosis.
+    Takes user input data and returns excel with diagnosis of each patient. User must input csv file name including
+    .csv file type as a string.
     '''
     data = pd.read_csv(str(csv_name))
     predictions_df = pd.DataFrame(columns=['Sample ID', 'Diagnosis'])
@@ -62,9 +78,8 @@ def average_ensemble(csv_name):
     
     x_ticks_ = [0,1]
     x_tick_labels = ['Benign','Malignant']
-    time = datetime.now()
-    time_stamp = "%s.%s.%s-%s.%s.%s" % (time.year, time.month, time.day, time.hour, time.minute, time.second)
-    with PdfPages("Sample_Prediction_Overview_"+time_stamp+".pdf") as pdf:
+    
+    with PdfPages("Sample_Prediction_Overview_"+str(datetime.now())+".pdf") as pdf:
         for i in range(len(list_of_boolean_values.T)):
             current_patient = list(list_of_boolean_values[i])
             sample_id = predictions_df.index[i]
@@ -106,8 +121,12 @@ def average_ensemble(csv_name):
         plt.tight_layout()
         pdf.savefig(fig)
         plt.close('all')
+        print(predictions_df)
+        print(".PDF and .CSV files saved under: Sample_Prediction_Overview_"+str(datetime.now()))
     
-    return predictions_df, predictions_df.to_csv("Sample_Prediction_Overview_"+time_stamp+".csv", index=True)
+    return predictions_df, predictions_df.to_csv("Sample_Prediction_Overview_"+str(datetime.now())+".csv", index=True)
 
+if __name__ == "__main__":
+    main()
 
 
