@@ -22,13 +22,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 
-
 # Importing data cleaning functions
 from clean_split_data import clean_data
 from clean_split_data import split_data
-
-
-
 
 
 def main():
