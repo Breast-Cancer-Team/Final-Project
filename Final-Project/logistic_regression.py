@@ -32,18 +32,28 @@ X_train, X_test, y_train, y_test = split_data(data)
 
 
 # ### Classifier
-clf = LogisticRegression(solver="saga", max_iter=5000) 
+clf = LogisticRegression(solver="saga", max_iter=5000)
 clf.fit(X_train, y_train)
+
 
 # ### Optimized Logistic Regression Predictor
 def feature_names():
     '''
-    Returns array of input features of best performing backwards stepwise selection test.
+    Returns array of input features of
+    best performing backwards stepwise selection test.
     '''
-    
-    return ['radius_mean', 'texture_mean', 'perimeter_mean',
-       'area_mean', 'smoothness_mean', 'compactness_mean', 'concavity_mean',
-       'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean']
+
+    return ['radius_mean',
+            'texture_mean',
+            'perimeter_mean',
+            'area_mean',
+            'smoothness_mean',
+            'compactness_mean',
+            'concavity_mean',
+            'concave points_mean',
+            'symmetry_mean',
+            'fractal_dimension_mean']
+
 
 def predict(test_data):
     '''
@@ -51,10 +61,12 @@ def predict(test_data):
     '''
     X = data[feature_names()]
     y = data.diagnosis
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    logistic_reg = LogisticRegression(solver="saga", max_iter=5000) 
+    X_train, X_test, y_train, y_test = train_test_split(X,
+                                                        y,
+                                                        test_size=0.2,
+                                                        random_state=42)
+    logistic_reg = LogisticRegression(solver="saga", max_iter=5000)
     logistic_reg.fit(X_train, y_train)
     y_pred = logistic_reg.predict(test_data)
-    
-    return y_pred
 
+    return y_pred
