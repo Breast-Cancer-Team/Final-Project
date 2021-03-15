@@ -1,4 +1,4 @@
-name: SLED-environment
+name: test-environment
 channels:
   - defaults
 dependencies:
