@@ -3,18 +3,17 @@
 
 # In[13]:
 
-
+# # Pandas library for the pandas dataframes and maths
 import sys
 import pandas as pd 
 from numpy import mean
 from numpy import std
 
-
+# Import Scikit-Learn library for models
 import sklearn
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import RepeatedStratifiedKFold
 from sklearn.ensemble import BaggingClassifier, RandomForestClassifier
-
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import StackingClassifier
@@ -23,6 +22,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 
+
+# Importing data cleaning functions
 from clean_split_data import clean_data
 from clean_split_data import split_data
 
@@ -43,12 +44,17 @@ def main():
     except Exception as e:
         print(str(e))
         print("Either illegal arguments or no arguments were given by the User. Please read Reamde file")
+    
+    return
 
 
-
-def parsed_input_csv(data): 
+def parsed_input_csv(data):
+    """
+    Converts datafile to a list
+    """
     data = pd.read_csv(data)
     parsed_data = data.values.tolist()
+    
     return parsed_data
         
 

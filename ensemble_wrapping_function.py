@@ -24,8 +24,8 @@ sns.set()
 # Averaging ensemble function
 def average_ensemble(csv_name):
     '''
-    Takes user input data and returns excel with diagnosis of each patient. User must input csv file name including
-    .csv file type as a string.
+    Takes user input data and returns excel with diagnosis of each patient. User must input csv file name including .csv file type as a string.
+    Also returns pdf file detailing diagnosis of each case as well as probability distributions of diagnosis.
     '''
     data = pd.read_csv(str(csv_name))
     predictions_df = pd.DataFrame(columns=['Sample ID', 'Diagnosis'])
@@ -62,8 +62,9 @@ def average_ensemble(csv_name):
     
     x_ticks_ = [0,1]
     x_tick_labels = ['Benign','Malignant']
-    
-    with PdfPages("Sample_Prediction_Overview_"+str(datetime.now())+".pdf") as pdf:
+    time = datetime.now()
+    time_stamp = "%s.%s.%s-%s.%s.%s" % (time.year, time.month, time.day, time.hour, time.minute, time.second)
+    with PdfPages("Sample_Prediction_Overview_"+time_stamp+".pdf") as pdf:
         for i in range(len(list_of_boolean_values.T)):
             current_patient = list(list_of_boolean_values[i])
             sample_id = predictions_df.index[i]
@@ -106,6 +107,7 @@ def average_ensemble(csv_name):
         pdf.savefig(fig)
         plt.close('all')
     
-    return predictions_df, predictions_df.to_csv("Sample_Prediction_Overview_"+str(datetime.now())+".csv", index=True)
+    return predictions_df, predictions_df.to_csv("Sample_Prediction_Overview_"+time_stamp+".csv", index=True)
+
 
 
