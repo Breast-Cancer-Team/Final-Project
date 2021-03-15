@@ -21,7 +21,7 @@ import pandas as pd
 # In[3]:
 
 
-test_data = 'test_file.csv'
+test_data = 'Final-Project/data/test_file.csv'
 # In[7]:
 
 

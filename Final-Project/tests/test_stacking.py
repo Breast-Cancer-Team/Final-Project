@@ -17,7 +17,7 @@ import pandas as pd
 # In[2]:
 
 
-file_name = 'data2.csv'
+file_name = 'Final-Project/data/data2.csv'
 
 
 # In[3]:
