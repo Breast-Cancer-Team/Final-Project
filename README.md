@@ -1,4 +1,4 @@
-### Machine Learning Ensemble To Determine Tumor Benign or Malignant Status 
+# Machine Learning Ensemble To Determine Tumor Benign or Malignant Status 
 
 ## Introduction
 Welcome to our open source ensemble! This program is optimized to predict malignant or benign status of a tumor given quatitative measurements of the tumor cells nucleii.
@@ -61,7 +61,7 @@ For Averaging Ensemble
 - when promted, supply filename.csv. (I.E. test_file.csv)
 - files should output from here!
 
-For stacking classifier:
+For Stacking Classifier:
 - similar to above; Open terminal and move into the working directory of stacking.py
 - in the command line input: python3 stacking.py -stacking
 - when promted, supply filename.csv. (I.E. test_file.csv)
