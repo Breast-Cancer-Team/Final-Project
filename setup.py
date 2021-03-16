@@ -34,7 +34,7 @@ setup(
         "pandas>=0.25.3",
         "pytest>=5.3.4",
         "pytest-cov>=2.8.1",
-        "seaborn>=0.11.1"
+        "seaborn>=0.11.1",
         "scikit-learn>=0.24.1"
     tests_require={
         'pytest',
