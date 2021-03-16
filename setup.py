@@ -9,16 +9,17 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 
 setup(
-    name='Final-Project', 
+    name='Final-Project',
     version='1.0.0',
-    description='Diagnoses breast cancer samples as benign or malignant',  
+    description='Diagnoses breast cancer samples as benign or malignant',
     long_description=long_description,
-    long_description_content_type='text/markdown',  
-    url='https://github.com/Breast-Cancer-Team/Final-Project',  
-    author='Wensy Chan, Kevin Cao, Keiton Guan, Sarah Wait', 
-    author_email='wensy22@uw.edu, kevcao22@uw.edu, keitong@uw.edu, swait@uw.edu',  
+    long_description_content_type='text/markdown',
+    url='https://github.com/Breast-Cancer-Team/Final-Project',
+    author='Wensy Chan, Kevin Cao, Keiton Guan, Sarah Wait',
+    author_email=(
+        'wensy22@uw.edu, kevcao22@uw.edu, keitong@uw.edu, swait@uw.edu'),
 
-    classifiers=[  
+    classifiers=[
         'Intended Audience :: Pathologists',
         'Topic :: Scientific/Engineering :: Medical Science Apps',
         'License :: OSI Approved :: MIT License',
@@ -36,11 +37,10 @@ setup(
         "pytest-cov>=2.8.1",
         "seaborn>=0.11.1",
         "scikit-learn>=0.24.1"
-    tests_require={
-        'pytest',
-        'pytest-cov'
-    },
-    project_urls={ 
-        'Kaggle Dataset': 'https://www.kaggle.com/uciml/breast-cancer-wisconsin-data',
+    ]
+    tests_require={'pytest', 'pytest-cov'},
+    project_urls={
+        'Kaggle Dataset':
+        'https://www.kaggle.com/uciml/breast-cancer-wisconsin-data',
     },
 )
