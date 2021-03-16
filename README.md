@@ -15,18 +15,16 @@ The reason we chose an ensemble approach is to have a "voting approach" approach
 ## Code Style
 Code is PEP8 compliant. 
 
-## Screenshots of Code
-
 ## Tech/Framework Used
-   Built with:
-     - Jupyter Notebook
-     - Sublime Text
+Built with:
+- Jupyter Notebook
+- Sublime Text
 
 ## Features:
-     - command line accessible calling capabilities
-     - All ML algortihms used, saved as .py files
-     - a wrapping function that acquires the data from the user and outputs a prediction to the command line.
-     - a data splitting function that takes the users input data and cleans+pasrses it. 
+- command line accessible calling capabilities
+- All ML algortihms used, saved as .py files
+- a wrapping function that acquires the data from the user and outputs a prediction to the command line.
+- a data splitting function that takes the users input data and cleans+pasrses it. 
  
 ## Use Cases: 
 User: Pathologist examining fine needle aspirations of breast cancer tissue under a microscope for malignancy status.
@@ -50,19 +48,28 @@ Responses:
 Messages: 
 - Dimensions out of bounds.
 - Not enough information provided.
-- Incorrect File Type.
-
-## Code Example
+- Incorrect File Type
 
 ## Installation Instructions
-
-## API Reference
-?? I dont know if this is necessary
+In terminal, change directories to where the user would like the file to be saved. 
+To download the functions simply put: git clone https://github.com/Breast-Cancer-Team/Final-Project.git
 
 ## Code Test Examples
+For Averaging Ensemble
+- Open terminal and move into the working directory of ensemble_wrapping_function.py
+- in the command line input: python3 ensemble_wrapping_function.py -averaging
+- when promted, supply filename.csv. (I.E. test_file.csv)
+- files should output from here!
+
+For stacking classifier:
+- similar to above; Open terminal and move into the working directory of stacking.py
+- in the command line input: python3 stacking.py -stacking
+- when promted, supply filename.csv. (I.E. test_file.csv)
+- files should output from here!
+ 
 
 ## Contributing Guidline
-    If you would like to contribute to this project, areas in which more contribution would be welcome is in the generations of additional weak learners to add to the voting population.
+If you would like to contribute to this project, areas in which more contribution would be welcome is in the generations of additional weak learners to add to the voting population.
 Additionally, a graphic user interface for the pathologists to easily access the program would also be helpful. The current documentation is PEP8 compliant and worked out of the GitHub Repository listed below. 
 
 ## Credits
