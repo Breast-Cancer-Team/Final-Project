@@ -10,7 +10,7 @@ We thought that given the quantitative measurements that pathologists gather abo
 The reason we chose an ensemble approach is to have a "voting approach" approach to the issue, the most common output from each of our weak learners will be included as the ensemble's designation. 
 
 ## Build Status
-Using Travis-CI
+[![Build Status](https://travis-ci.com/Breast-Cancer-Team/Final-Project.svg?branch=main)](https://travis-ci.com/github/Breast-Cancer-Team/Final-Project) ![image](https://user-images.githubusercontent.com/76963375/111248155-96813100-85c6-11eb-806f-45a72cc5f608.png
 
 ## Code Style
 Code is PEP8 compliant. 
