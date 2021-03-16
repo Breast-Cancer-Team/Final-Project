@@ -8,7 +8,7 @@ from clean_split_data import split_data
 
 # Import Scikit-Learn library for the classification models
 from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC, LinearSVC
+from sklearn.svm import SVC
 
 # Import plotting libraries
 import matplotlib
