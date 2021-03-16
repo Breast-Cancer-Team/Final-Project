@@ -28,7 +28,7 @@ import pandas as pd
 # In[2]:
 
 
-data = pd.read_csv('Final-Project/data/data.csv')
+data = pd.read_csv('data/data.csv')
 
 
 # In[3]:
@@ -54,7 +54,8 @@ def test_feature_names_1():
     '''
     for model in list_of_models:
         features = model.feature_names()
-        assert isinstance(features, list), "Feature names must be in a list"
+        assert isinstance(features, list), (
+            "Feature names must be in a list")
 
     return
 
@@ -69,7 +70,8 @@ def test_feature_names_2():
     for model in list_of_models:
         features = model.feature_names()
         for name in features:
-            assert isinstance(name, str), "Feature names must be strings"
+            assert isinstance(name, str), (
+                "Feature names must be strings")
 
     return
 
@@ -85,8 +87,8 @@ def test_predict_1():
         X_train, X_test, y_train, y_test = clean_split_data.split_data(data)
         X_test = X_test[model.feature_names()]
         y_pred = model.predict(X_test)
-        assert isinstance(y_pred, np.ndarray), ...
-        "Predicted boolean outputs must be in an array"
+        assert isinstance(y_pred, np.ndarray), (
+            "Predicted boolean outputs must be in an array")
 
     return
 
@@ -103,6 +105,8 @@ def test_predict_2():
         X_test = X_test[model.feature_names()]
         y_pred = model.predict(X_test)
         for pred in y_pred:
-            assert isinstance(pred, np.int64)
+            assert isinstance(pred, np.int64), (
+                "Boolean output is neither 0 or 1"
+            )
 
     return

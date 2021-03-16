@@ -2,20 +2,18 @@
 # coding: utf-8
 
 # In[1]:
+# Import cleaning and splitting functions
+from clean_split_data import clean_data
+from clean_split_data import split_data
 
 
 # Pandas library for the pandas dataframes
 import pandas as pd
 
+
 # Import Scikit-Learn library for decision tree models
-from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import BaggingClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score, mean_squared_error, accuracy_score
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import plot_confusion_matrix
 
 
 # Import cleaning and splitting functions
@@ -25,7 +23,6 @@ from clean_split_data import split_data
 
 # Import plotting libraries
 import matplotlib
-from matplotlib import pyplot as plt
 
 
 # Set larger fontsize for all plots
@@ -54,15 +51,15 @@ def feature_names():
             'smoothness_mean', 'concave points_mean', 'fractal_dimension_mean']
 
 
-# User input to predict diagnosis data.
+# User input to predict diagnosis
 def predict(test_data):
     '''
     Takes test data and uses classifier to predict boolean output.
     '''
     X = data[feature_names()]
     y = data.diagnosis
-    X_train, X_test, y_train, y_test =
-    train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
     classifier = DecisionTreeClassifier(max_depth=5)
     classifier.fit(X_train, y_train)
     y_pred = classifier.predict(test_data)

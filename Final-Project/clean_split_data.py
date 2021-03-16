@@ -23,15 +23,12 @@ def split_data(data):
     Takes cleaned dataset and splits into train, test sets.
     '''
     X = data[['radius_mean', 'texture_mean', 'perimeter_mean',
-              'area_mean',
-              'smoothness_mean',
-              'compactness_mean',
-              'concavity_mean',
-              'concave points_mean',
-              'symmetry_mean',
+              'area_mean', 'smoothness_mean',
+              'compactness_mean', 'concavity_mean',
+              'concave points_mean', 'symmetry_mean',
               'fractal_dimension_mean']]
     y = data.diagnosis
-    X_train, X_test, y_train, y_test =
-    train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
 
     return X_train, X_test, y_train, y_test

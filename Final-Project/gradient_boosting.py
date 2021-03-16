@@ -1,4 +1,5 @@
-# Cleaing and splitting data
+# Data transformations
+
 from clean_split_data import clean_data
 from clean_split_data import split_data
 
@@ -10,11 +11,12 @@ import pandas as pd
 # Import Scikit-Learn library for the regression models
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.metrics import plot_confusion_matrix
+
 
 # Import plotting libraries
 import seaborn as sns
 import matplotlib
+from matplotlib import pyplot as plt
 
 
 # Set larger fontsize for all plots
@@ -28,10 +30,8 @@ X_train, X_test, y_train, y_test = split_data(data)
 
 # ### Classifier
 tree_count = 10
-gradient_model = GradientBoostingClassifier
-(n_estimators=tree_count,
- learning_rate=0.1,
- max_depth=10, random_state=42)
+gradient_model = GradientBoostingClassifier(
+    n_estimators=tree_count, learning_rate=0.1, max_depth=10, random_state=42)
 gradient_model.fit(X_train, y_train)
 
 
@@ -52,10 +52,10 @@ def predict(test_data):
     '''
     X = data[feature_names()]
     y = data.diagnosis
-    X_train, X_test, y_train, y_test =
-    train_test_split(X, y, test_size=0.2, random_state=42)
-    gradient_model = GradientBoostingClassifier
-    (n_estimators=10, learning_rate=0.1, max_depth=10, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
+    gradient_model = GradientBoostingClassifier(
+        n_estimators=10, learning_rate=0.1, max_depth=10, random_state=42)
     gradient_model.fit(X_train, (y_train))
     y_pred = gradient_model.predict(test_data)
 
