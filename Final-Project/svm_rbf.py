@@ -26,10 +26,6 @@ from matplotlib import pyplot as plt
 # Set larger fontsize for all plots
 matplotlib.rcParams.update({'font.size': 20})
 
-<<<<<<< HEAD
-# Data
-data = pd.read_csv('data.csv')
-=======
 ## Import cleaning and splitting functions
 from clean_split_data import clean_data
 from clean_split_data import split_data
@@ -37,7 +33,6 @@ from clean_split_data import split_data
 
 # ### Data
 data = pd.read_csv('data/data.csv')
->>>>>>> 3acde68b7cbd6fb539ec7da510d556837d9a609a
 data = clean_data(data)
 X_train, X_test, y_train, y_test = split_data(data)
 
