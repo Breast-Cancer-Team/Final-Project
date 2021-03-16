@@ -1,4 +1,4 @@
-# Machine Learning Ensemble To Determine Tumor Benign or Malignant Status 
+# SLED: Machine Learning Ensemble To Determine Tumor Benign or Malignant Status 
 
 ## Introduction
 Welcome to our open source ensemble! This program is optimized to predict malignant or benign status of a tumor given quatitative measurements of the tumor cells nucleii.
