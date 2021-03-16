@@ -39,7 +39,7 @@ before_script:
 
 # the actual commands to run
 script:
-    - python -m pytest --cov-report term --cov=Final-Project tests/
+    - python -m pytest --cov-report term --cov=Final-Project Final-Project/tests/
 
 # generate a coverage report to send to back to user
 after_success:
