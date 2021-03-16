@@ -21,7 +21,7 @@ import pandas as pd
 # In[3]:
 
 
-test_data = 'Final-Project/data/test_file.csv'
+test_data = 'data/test_file.csv'
 # In[7]:
 
 
@@ -30,8 +30,9 @@ def test_average_ensemble_1():
     Tests to see if pandas dataframe is returned as predictions_df
     '''
     df, csv = ensemble_wrapping_function.average_ensemble(test_data)
-    assert isinstance(df, pd.DataFrame)
-    
+    assert isinstance(df, pd.DataFrame), (
+        "Returned dataframe is not a Pandas Dataframe")
+
     return
 
 
@@ -40,10 +41,11 @@ def test_average_ensemble_1():
 
 def test_average_ensemble_2():
     '''
-    Tests to see if second return of csv file is expected NoneType (since it is a downloaded file)
+    Tests to see if second return of csv file is
+    expected NoneType (since it is a downloaded file)
     '''
     df, csv = ensemble_wrapping_function.average_ensemble(test_data)
-    assert isinstance(csv, type(None))
-    
-    return
+    assert isinstance(csv, type(None)), (
+        "CSV file was returned as not a NoneType, check return code")
 
+    return
