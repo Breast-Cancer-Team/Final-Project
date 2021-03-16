@@ -51,6 +51,7 @@ def predict(test_data):
     y = data.diagnosis
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42)
+
     logistic_reg = LogisticRegression(solver="saga", max_iter=5000)
     logistic_reg.fit(X_train, y_train)
     y_pred = logistic_reg.predict(test_data)

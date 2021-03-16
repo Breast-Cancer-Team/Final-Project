@@ -1,4 +1,5 @@
 # Data transformations
+
 from clean_split_data import clean_data
 from clean_split_data import split_data
 
@@ -6,14 +7,17 @@ from clean_split_data import split_data
 # Pandas library for the pandas dataframes
 import pandas as pd
 
+
 # Import Scikit-Learn library for the regression models
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
+
 
 # Import plotting libraries
 import seaborn as sns
 import matplotlib
 from matplotlib import pyplot as plt
+
 
 # Set larger fontsize for all plots
 matplotlib.rcParams.update({'font.size': 20})

@@ -97,7 +97,6 @@ def average_ensemble(csv_name):
                 'Prediction Density': current_patient}
             dataframe_of_patient_data = pd.DataFrame(
                 dictionary_of_patient_data)
-
             mu = dataframe_of_patient_data['Prediction Density'].mean()
             median = np.median(dataframe_of_patient_data)
             sigma = dataframe_of_patient_data['Prediction Density'].std()

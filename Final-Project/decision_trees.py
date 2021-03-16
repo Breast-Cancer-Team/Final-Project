@@ -16,6 +16,11 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 
 
+# Import cleaning and splitting functions
+from clean_split_data import clean_data
+from clean_split_data import split_data
+
+
 # Import plotting libraries
 import matplotlib
 

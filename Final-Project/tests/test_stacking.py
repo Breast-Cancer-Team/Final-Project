@@ -8,12 +8,6 @@
 import stacking
 
 
-# Importing libraries for property tests
-import math
-import numpy as np
-import pandas as pd
-
-
 # In[2]:
 
 
@@ -107,8 +101,7 @@ def test_please_predict_me_1():
     '''
     result_dict = stacking.please_predict_me(file_name)
     assert isinstance(result_dict, dict), (
-        "Returned output is not a dictionary"
-    )
+        "Returned output is not a dictionary")
 
     return
 

@@ -7,14 +7,7 @@
 # Importing wrapping function
 import ensemble_wrapping_function
 
-
-# Import cleaning and splitting
-import clean_split_data
-
-
 # Importing libraries for property tests
-import math
-import numpy as np
 import pandas as pd
 
 

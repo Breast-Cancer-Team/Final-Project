@@ -10,6 +10,11 @@ from clean_split_data import clean_data
 import sys
 import pandas as pd
 
+
+# Importing data cleaning functions
+from clean_split_data import clean_data
+from clean_split_data import split_data
+
 # Import Scikit-Learn library for models
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -54,7 +59,7 @@ def parsed_input_csv(data):
 # Predicts diagnosis based on input data
 def stacking_predictor(row):
     """
-    Trainning stacking model with our data
+    Training stacking model with our data
     Define what our base layer will be composed of and then build
     a stacking classifier base
     on these models.
@@ -72,7 +77,6 @@ def stacking_predictor(row):
     y = our_trained_data[['diagnosis']]
     x_train, x_test, y_train, y_test = train_test_split(
         x, y, test_size=0.2, random_state=42)
-
     x_train = x_train.values.tolist()
     y_train = y_train.values.tolist()
     flattened_y_train = []
@@ -90,7 +94,7 @@ def stacking_predictor(row):
                      solver="lbfgs", max_iter=1460)),
                  ('knn', KNeighborsClassifier(n_neighbors=5)),
                  ('svm_rbf', SVC(kernel='rbf', gamma=4, C=10000))
-                ]
+                 ]
 
     Stacking_classifier = StackingClassifier(
         estimators=estimators, final_estimator=LogisticRegression(), cv=5)

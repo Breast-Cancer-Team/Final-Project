@@ -3,13 +3,15 @@
 
 # In[1]:
 
+"""
+This file will be used to test the clean_split_data.py file.
+"""
 
 # Import cleaning and splitting
 import clean_split_data
 
 # Importing libraries for property tests
 import math
-import numpy as np
 import pandas as pd
 
 
@@ -116,6 +118,7 @@ def test_clean_data_6():
     for cancer in diagnosis:
         assert isinstance(cancer, int), (
             "Diagnosis values are not integers")
+
     return
 
 
@@ -152,4 +155,5 @@ def test_split_data_2():
     train_split = train_length / total_length
     assert math.isclose(train_split, 0.80, abs_tol=0.1), (
         "Training set is not at specified 80% of dataset")
+
     return
