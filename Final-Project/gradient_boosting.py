@@ -14,9 +14,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 
 
 # Import plotting libraries
-import seaborn as sns
 import matplotlib
-from matplotlib import pyplot as plt
 
 
 # Set larger fontsize for all plots

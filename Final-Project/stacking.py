@@ -11,10 +11,6 @@ import sys
 import pandas as pd
 
 
-# Importing data cleaning functions
-from clean_split_data import clean_data
-from clean_split_data import split_data
-
 # Import Scikit-Learn library for models
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split

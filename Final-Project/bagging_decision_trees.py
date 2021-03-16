@@ -15,16 +15,10 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score, mean_squared_error, accuracy_score
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import plot_confusion_matrix
 
 
 # Import plotting libraries
-import seaborn as sns
 import matplotlib
-from matplotlib import pyplot as plt
 
 
 # Set larger fontsize for all plots

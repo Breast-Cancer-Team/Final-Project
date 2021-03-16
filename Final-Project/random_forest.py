@@ -9,11 +9,9 @@ import pandas as pd
 
 # Import Scikit-Learn library for decision tree models
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_selection import f_regression, SequentialFeatureSelector
 from sklearn.model_selection import train_test_split
 
 # Import plotting libraries
-import seaborn as sns
 import matplotlib
 
 # Set larger fontsize for all plots

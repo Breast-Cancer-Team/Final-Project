@@ -1,34 +1,20 @@
-# Pandas library for the pandas dataframes
-import pandas as pd
-import numpy as np
-
 # Import cleaning and splitting functions
 from clean_split_data import clean_data
 from clean_split_data import split_data
 
+# Pandas library for the pandas dataframes
+import pandas as pd
+
+
 # Import Scikit-Learn library for the classification models
-import sklearn
-from sklearn import datasets
-from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score, accuracy_score
 from sklearn.svm import SVC
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import plot_confusion_matrix
-from sklearn.feature_selection import SequentialFeatureSelector
-from sklearn.metrics import classification_report
 
 # Import plotting libraries
-import seaborn as sns
 import matplotlib
-from matplotlib import pyplot as plt
 
 # Set larger fontsize for all plots
 matplotlib.rcParams.update({'font.size': 20})
-
-## Import cleaning and splitting functions
-from clean_split_data import clean_data
-from clean_split_data import split_data
 
 
 # ### Data
